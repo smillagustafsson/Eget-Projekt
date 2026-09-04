@@ -1,4 +1,5 @@
 # Hej, jag är Smilla Gustafsson! 👋 
+👉 **[KLICKA HÄR FÖR ATT ÖPPNA MIN INTERAKTIVA PORTFOLIO-HEMSIDA LIVE!](https://github.io)**
 ### Junior BI & Data Analyst | Blivande Business Analyst
 
 Välkommen till min digitala profil och tech-portfölj! Jag är nyutexaminerad med en **dubbelkandidatexamen inom Data- och systemvetenskap samt Reklam och PR** från Stockholms universitet. 

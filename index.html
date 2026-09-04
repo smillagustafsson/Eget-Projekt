@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smilla Gustafsson — BI & Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Laddar Chart.js för interaktiva diagram -->
+    <script src="https://jsdelivr.net"></script>
+    <!-- Laddar SQL.js för att kunna köra SQL direkt i webbläsaren -->
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Smilla Gustafsson</h1>
+            <p class="subtitle">Junior BI & Data Analyst | Finans- & Aktieanalys</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- OM MIG -->
+        <section class="card">
+            <h2>🎯 Om mig</h2>
+            <p>Nyutexaminerad med en <strong>dubbelkandidatexamen inom Data- och systemvetenskap samt Reklam och PR</strong> från Stockholms universitet. Kombinationen av utbildningarna har gett mig en bred teknisk och verksamhetsnära kompetens inom systemutveckling, dataanalys, databaser, AI och affärsförståelse. Har ett lösningsorienterat arbetssätt och ett öga för struktur och kvalitet samtidigt som jag drivs av att kombinera analys, problemlösning och kommunikation.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data & Analys</h3>
+                    <p>SQL, Microsoft Excel, Dataanalys, Business Intelligence-verktyg, Datavisualisering</p>
+                </div>
+                <div class="skill-category">
+                    <h3>System & Verktyg</h3>
+                    <p>CRM-system, Microsoft Access, HTML/CSS, Python, Java</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD & DIAGRAM -->
+        <section class="card">
+            <h2>📊 Interaktiv Aktiedashboard (Power BI / Chart.js)</h2>
+            <p>Denna dashboard simulerar visualisering av portföljdata för att snabbt identifiera trender och direktavkastning.</p>
+            <div class="dashboard-grid">
+                <div class="kpi-card positive">
+                    <h4>Bästa Aktie (Performance)</h4>
+                    <p class="kpi-value">+4.76%</p>
+                    <span class="kpi-label">Saab (SAAB-B)</span>
+                </div>
+                <div class="kpi-card">
+                    <h4>Högst Direktavkastning</h4>
+                    <p class="kpi-value">5.50%</p>
+                    <span class="kpi-label">Volvo (VOLV-B)</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </section>
+
+        <!-- INTERAKTIV SQL -->
+        <section class="card">
+            <h2>🔎 Fråga datan direkt (Live SQL)</h2>
+            <p>Skriv din egen SQL-fråga mot den lokala aktiedatabasen eller använd exempelfrågan nedan.</p>
+            <div class="sql-box">
+                <textarea id="sqlQuery">SELECT CompanyName, Ticker, Sector, DividendYield_Percent FROM Companies WHERE DividendYield_Percent > 2.0 ORDER BY DividendYield_Percent DESC;</textarea>
+                <button id="runSqlBtn">Kör fråga (Ctrl + Enter)</button>
+            </div>
+            <div id="sqlStatus" class="status-msg">Laddar SQL-databas i webbläsaren...</div>
+            <div class="table-container">
+                <table id="sqlResultTable">
+                    <!-- SQL-resultat renderas här -->
+                </table>
+            </div>
+        </section>
+
+        <!-- ERFARENHET & UTBILDNING -->
+        <section class="card">
+            <h2>💼 Erfarenhet & Utbildning</h2>
+            
+            <div class="timeline-item">
+                <h3>Clas Ohlson — Butikssäljare</h3>
+                <span class="date">Sep 2024 – Pågående</span>
+                <p>Ansvarar för försäljning och kundservice med fokus på merförsäljning. Arbetar dagligen i digitala system för betalningar och varuhantering i ett högt arbetstempo.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Klarna Bank — Kundtjänstmedarbetare (Cypern)</h3>
+                <span class="date">Sep 2022 - Mar 2023</span>
+                <p>Utredde och felsökte system- och datarelaterade avvikelser i finansiella flöden under tidspress. Arbetade i CRM- och ärendehanteringssystem för kvalitetssäkring.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Stockholms Universitet — Dubbelkandidatexamen</h3>
+                <span class="date">Aug 2023 - Jun 2026</span>
+                <p>Kandidatexamen i <strong>Data- och Systemvetenskap</strong> (BI, Data Warehousing, kravhantering) samt kandidatexamen i <strong>Reklam och PR</strong> (verksamhets- och affärsförståelse).</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Smilla Gustafsson &copy; 2026 | <a href="mailto:smilla03.gustafsson@gmail.com" style="color: #4cd137;">smilla03.gustafsson@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

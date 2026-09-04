@@ -5,13 +5,13 @@
 
 import pandas as pd
 
-# 1. Simulerar historisk aktiedata för en portfölj (Stängningskurser över 3 dagar)
+# 1. Historisk aktiedata för din portfölj (Stängningskurser)
 stock_data = {
-    'Ticker': ['INVE-B', 'VOLV-B', 'SAAB-B', 'INVE-B', 'VOLV-B', 'SAAB-B'],
-    'Company': ['Investor', 'Volvo', 'Saab', 'Investor', 'Volvo', 'Saab'],
-    'Sector': ['Investment', 'Industri', 'Försvar', 'Investment', 'Industri', 'Försvar'],
-    'Price_Day1': [280, 270, 245, 286, 275, 248],
-    'Price_Day2': [285, 272, 250, 284, 265, 252]
+    'Ticker': ['INVE-B', 'VOLV-B', 'SAAB-B'],
+    'Company': ['Investor', 'Volvo', 'Saab'],
+    'Sector': ['Investment', 'Industri', 'Försvar'],
+    'Price_Day1': [280.00, 279.75, 240.50],
+    'Price_Day2': [285.00, 272.50, 252.00]
 }
 
 df = pd.DataFrame(stock_data)
@@ -21,8 +21,3 @@ df['Performance_%'] = ((df['Price_Day2'] - df['Price_Day1']) / df['Price_Day1'])
 
 print("--- Finansiell dataanalys med Python (Rensad och beräknad) ---")
 print(df[['Company', 'Sector', 'Performance_%']])
-
-# 3. Filtrera fram aktier som har gått upp mer än 2% (Potentiella köpsignaler)
-print("\n--- Aktier med stark positiv trend (> 2% utveckling) ---")
-bullish_stocks = df[df['Performance_%'] > 2.0]
-print(bullish_stocks[['Company', 'Performance_%']])
