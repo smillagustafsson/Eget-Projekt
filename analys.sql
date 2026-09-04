@@ -1,50 +1,47 @@
 -- =========================================================================
--- BUSINESS ANALYSIS & DATA MODELING CASE
--- Syfte: Dokumentera och strukturera systemkrav direkt i datadatabasen 
--- för att visa spårbarhet mellan verksamhetsbehov och IT-leverans.
+-- JUNIOR DATA ANALYST - SQL & AZURE DATABASE MODELING
+-- Syfte: Strukturera finansiell data för en aktieportfölj.
+-- Anpassad för migrering till Azure SQL Database och visualisering i Power BI.
 -- =========================================================================
 
--- 1. Skapa tabell för att hålla reda på intressenter (Stakeholders)
-CREATE TABLE Stakeholders (
-    StakeholderID INT PRIMARY KEY,
-    Name VARCHAR(100),
-    Department VARCHAR(50),
-    InfluenceLevel VARCHAR(10) -- High, Medium, Low
+-- 1. Skapa tabell för bolagsinformation (Dimensionstabell)
+CREATE TABLE Companies (
+    CompanyID INT PRIMARY KEY,
+    Ticker VARCHAR(10) NOT NULL,
+    CompanyName VARCHAR(100) NOT NULL,
+    Sector VARCHAR(50),
+    DividendYield_Percent DECIMAL(4,2) -- Direktavkastning
 );
 
--- 2. Skapa tabell för kravhantering (Requirements Traceability Matrix)
-CREATE TABLE SystemRequirements (
-    RequirementID VARCHAR(10) PRIMARY KEY,
-    Description TEXT,
-    RequirementType VARCHAR(30), -- Functional, Non-Functional, Regulatory
-    Priority VARCHAR(10),        -- Must, Should, Could, Won't
-    Status VARCHAR(20),          -- Approved, In Progress, Deferred
-    OwnerID INT,
-    FOREIGN KEY (OwnerID) REFERENCES Stakeholders(StakeholderID)
+-- 2. Skapa tabell för dagliga aktiekurser (Faktatabell för BI-analys)
+CREATE TABLE StockPrices (
+    PriceID INT PRIMARY KEY,
+    CompanyID INT,
+    TradingDate DATE,
+    ClosingPrice DECIMAL(10,2),
+    Volume INT,
+    FOREIGN KEY (CompanyID) REFERENCES Companies(CompanyID)
 );
 
--- 3. Lägg till data som speglar Saabs efterfrågade profil
-INSERT INTO Stakeholders (StakeholderID, Name, Department, InfluenceLevel) VALUES
-(1, 'Finanschef', 'Verksamhet', 'High'),
-(2, 'IT-Säkerhetschef', 'IT', 'High'),
-(3, 'BI Developer', 'IT', 'Medium');
+-- 3. Lägg till data för analys (Svenska folkaktier)
+INSERT INTO Companies VALUES (1, 'INVE-B', 'Investor', 'Investment', 2.10);
+INSERT INTO Companies VALUES (2, 'VOLV-B', 'Volvo', 'Industri', 5.50);
+INSERT INTO Companies VALUES (3, 'SAAB-B', 'Saab', 'Försvar', 1.20);
 
-INSERT INTO SystemRequirements (RequirementID, Description, RequirementType, Priority, Status, OwnerID) VALUES
-('FR-001', 'Systemet ska automatiskt uppdatera dashboards i molnet var 6:e timme.', 'Functional', 'Must', 'Approved', 1),
-('NFR-001', 'Rapportgenerering i beslutsstödet får ta max 3 sekunder under hög belastning.', 'Non-Functional', 'Should', 'Approved', 3),
-('RR-001', 'All lagrad data måste krypteras enligt rådande säkerhetsskyddsbestämmelser.', 'Regulatory', 'Must', 'Approved', 2);
+INSERT INTO StockPrices VALUES (101, 1, '2026-09-04', 285.00, 1200000);
+INSERT INTO StockPrices VALUES (102, 2, '2026-09-04', 272.50, 2500000);
+INSERT INTO StockPrices VALUES (103, 3, '2026-09-04', 252.00, 800000);
 
--- 4. Analysfråga: Hämta alla kritiska krav inför nästa Agila Sprint/Workshop
--- Visar att BA kan köra SQL för att kontrollera scope
+-- 4. BI-Fråga: Hämta bolag med hög direktavkastning (High Yield) till Power BI
+-- Visar att du kan filtrera fram strategisk data med SQL
 SELECT 
-    RequirementID,
-    RequirementType,
-    Priority,
-    Description
+    CompanyName, 
+    Ticker, 
+    Sector, 
+    DividendYield_Percent
 FROM 
-    SystemRequirements
+    Companies
 WHERE 
-    Priority = 'Must' 
-    AND Status = 'Approved'
+    DividendYield_Percent > 2.0
 ORDER BY 
-    RequirementType DESC;
+    DividendYield_Percent DESC;

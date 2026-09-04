@@ -1,40 +1,53 @@
-# Eget-Projekt
-markdown# Case Study: Processkartläggning & Kravhantering för Molnmigrering av Affärsdata
+# Hej, jag är Smilla Gustafsson! 👋 
+### Junior BI & Data Analyst | Blivande Business Analyst
 
-Detta projekt är en fallstudie som visar min metodik som Business Analyst i gränslandet mellan verksamhet och IT. Projektet simulerar en övergång från ett lokalt system till en molnbaserad miljö (Azure) med fokus på datadriven analys och regulatorisk efterlevnad.
+Välkommen till min digitala profil och tech-portfölj! Jag är nyutexaminerad med en **dubbelkandidatexamen inom Data- och systemvetenskap samt Reklam och PR** från Stockholms universitet. 
 
-## 1. Affärsproblem & Kontext
-**Sammanhang:** Organisationen upplevde flaskhalsar i den finansiella rapporteringen. Rådata hämtades manuellt från lokala servrar, vilket ledde till ledtider på 5 dagar för ledningsrapporter samt hög risk för mänskliga fel.
-**Problemet:** Verksamheten behövde realtidsinsikter för beslutsfattande, medan IT behövde avveckla lokal infrastruktur för att minska underhållskostnader och möta nya lagkrav kring datalagring.
+Kombinationen av mina utbildningar har gett mig en bred teknisk och verksamhetsnära kompetens inom systemutveckling, dataanalys, databaser, AI och stark affärsförståelse. Jag har ett lösningsorienterat arbetssätt, ett öga för struktur och kvalitet, och jag drivs av att kombinera analys, problemlösning och kommunikation – att helt enkelt agera bron mellan IT och verksamhet.
 
-## 2. Min Analys: Strukturering av Behov, Krav & Scope
-För att bryta ner initiativet genomförde jag processkartläggning (AS-IS / TO-BE) och kategoriserade kraven i tre spår:
+På min fritid har jag ett stort intresse för **aktier och finans**. Här nedan visar jag hur jag kombinerar min passion för investeringar med min tekniska verktygslåda (**Python, SQL och Azure BI**) för att hämta, strukturera och visualisera finansiell data.
 
-*   **Funktionella krav (FR):** Systemet ska automatiskt uppdatera Power BI-dashboards var 6:e timme via molnet.
-*   **Icke-funktionella krav (NFR):** Svarstiden för rapportgenerering får inte överstiga 3 sekunder under hög belastning.
-*   **Regulatoriska krav (RR):** All datahantering och kryptering måste uppfylla gällande säkerhetsskyddsbestämmelser (Data-in-transit och Data-at-rest).
+---
 
-*Källkod för kraven återfinns i filen `requirements.sql` i detta arkiv.*
+## 📈 Mitt Finansiella Portföljprojekt
+För att visa hur jag jobbar i gränslandet mellan data och affärsvärde har jag byggt en pipeline för att analysera aktiedata:
 
-## 3. Stakeholders & Beslut (Hantering av Målkonflikter)
-Under analysfasen uppstod en målkonflikt:
-*   **Verksamheten (Finans):** Ville ha obegränsad tillgång till all historisk rådata i molnet för ad-hoc-analyser.
-*   **IT-Säkerhet:** Motsatte sig detta på grund av lagringskostnader och strikta säkerhetsregler kring känslig data.
+1.  **Python (Analysen):** Jag använder Python för att läsa in finansiell rådata, beräkna procentuell utveckling och filtrera fram aktier med stark positiv trend.
+    *👉 Se koden i filen `analys.py`.*
+2.  **SQL & Azure (Strukturen):** Jag har designat ett stjärnschema (fakta- och dimensionstabeller) anpassat för en molnmiljö i **Azure SQL Database** för att strukturera bolagsdata, nyckeltal (som direktavkastning) och historiska aktiekurser.
+    *👉 Se databasstrukturen i filen `analys.sql`.*
+3.  **Business Intelligence (Värdet):** Genom att koppla databasen till **Power BI** skapar jag interaktiva dashboards som transformerar råbörsdata till realtidsinsikter kring portföljutveckling, risk och direktavkastning mot index.
 
-**Min åtgärd:** Jag faciliterade en workshop där vi använde en konsekvensmatris. Jag visade att 85% av besluten baserades på data från de senaste 3 åren. 
-**Beslut:** Vi nådde alignment genom att införa en "Hot/Cold"-datastrategi: de senaste 3 åren migrerades till snabbt molnlagring (Azure), medan äldre data arkiverades billigt och säkert.
+---
 
-## 4. Prioritering & Värde (MoSCoW-metoden)
-För att säkerställa att rätt saker byggdes sorterade jag kraven tillsammans med produktägaren:
-*   **Must Have:** Automatiserad ETL-pipeline till molnet för kärndata samt grundläggande säkerhetsbehörigheter.
-*   **Should Have:** Power BI-dashboard för ledningsgruppen.
-*   **Could Have:** Prediktiv analys av framtida kassaflöden med Python.
-*   **Won't Have (just now):** Realtidsströmning per minut.
+## 🛠️ Kompetenser & Verktyg
 
-## 5. Resultat & Utfall
-*   **Effekt:** Ledtiden för månadsrapporteringen minskade från 5 dagar till 0 (automatiserad realtid).
-*   **Kvalitet:** Manuella fel i datainmatningen eliminerades helt tack vare de automatiserade valideringsreglerna.
-*   **Säkerhet:** Det nya molnlandskapet godkändes i den externa säkerhetsgranskningen utan anmärkningar.
+*   **Data & Analys:** SQL, Microsoft Excel, Dataanalys, Business Intelligence-verktyg, Datavisualisering, Data Warehousing, NoSQL-databaser.
+*   **System & Verktyg:** CRM-system, Ärendehanteringssystem (Jira/Zendesk), Microsoft Access, HTML/CSS, ERP-system.
+*   **Tekniska Kunskaper:** Python, Java, UML-modellering, Kravhantering, Systemintegration.
+*   **Språk:** Svenska (Modersmål), Engelska (Flytande).
 
-## 6. Förbättrat Arbetssätt
-Under projektets gång märkte jag att utvecklingsteamet (IT) ofta missförstod verksamhetens behov. Jag introducerade därför **Behavior-Driven Development (BDD)** i form av *"Given-When-Then"*-scenarier i Jira. Detta förbättrade kommunikationen, minskade antalet buggar i testfasen med 30% och stärkte team-samspelet avsevärt.
+---
+
+## 💼 Utbildning & Erfarenhet i urval
+
+### Utbildning
+*   **Fil.kand. i Data- och Systemvetenskap** | Stockholms Universitet (2023 - 2026)
+    *   *Fokus:* Data warehousing, BI, datadriven analys, kravhantering, strategisk IT-ledning.
+*   **Fil.kand. i Reklam och PR** | Stockholms Universitet (2023 - 2026)
+    *   *Fokus:* Varumärkesbyggande, organisationsledning, redovisning samt verksamhets- och affärsförståelse.
+*   **Ekonomiprogrammet** | Anna Whitlocks gymnasium (2019 - 2022)
+    *   *Fokus:* Företagsekonomi, bokföring, redovisning och finansiell analys.
+
+### Arbetslivserfarenhet
+*   **Klarna Bank (Cypern) – Kundtjänstmedarbetare** (2022 - 2023)
+    *   Utredde och felsökte system- och datarelaterade avvikelser i komplexa finansiella flöden (fakturor, betalningar, transaktioner). Arbetade dagligen i CRM- och ärendehanteringssystem för kvalitetssäkring i en internationell miljö under tidspress.
+*   **Clas Ohlson – Butikssäljare** (2024 - Pågående)
+    *   Ansvarar för försäljning, merförsäljning och kundservice. Arbetar dagligen i digitala system för betalningar, returer och varuhantering med fokus på effektivt butiksflöde och snabba, välgrundade beslut.
+
+---
+
+## 📬 Låt oss koppla ihop på LinkedIn!
+Jag letar just nu efter spännande utmaningar som **Junior BI Analyst**, **Data Analyst** eller **Business Analyst** i Stockholm (eller remote).
+*   **LinkedIn:** [Klicka här för att besöka min LinkedIn-profil](https://linkedin.com) *(Byt ut till din riktiga länk)*
+*   **E-post:** smilla03.gustafsson@gmail.com
