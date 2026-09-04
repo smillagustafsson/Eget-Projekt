@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smilla Gustafsson — BI & Data Analyst Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Laddar Chart.js för interaktiva diagram -->
+    <!-- Laddar Chart.js för diagram -->
     <script src="https://jsdelivr.net"></script>
-    <!-- Laddar SQL.js för att kunna köra SQL direkt i webbläsaren -->
-    <script src="https://cloudflare.com"></script>
 </head>
 <body>
 
@@ -38,7 +36,7 @@
             </div>
         </section>
 
-        <!-- DASHBOARD & DIAGRAM -->
+        <!-- DASHBOARD -->
         <section class="card">
             <h2>📊 Interaktiv Aktiedashboard (Power BI / Chart.js)</h2>
             <p>Denna dashboard simulerar visualisering av portföljdata för att snabbt identifiera trender och direktavkastning.</p>
@@ -59,42 +57,26 @@
             </div>
         </section>
 
-        <!-- INTERAKTIV SQL -->
-        <section class="card">
-            <h2>🔎 Fråga datan direkt (Live SQL)</h2>
-            <p>Skriv din egen SQL-fråga mot den lokala aktiedatabasen eller använd exempelfrågan nedan.</p>
-            <div class="sql-box">
-                <textarea id="sqlQuery">SELECT CompanyName, Ticker, Sector, DividendYield_Percent FROM Companies WHERE DividendYield_Percent > 2.0 ORDER BY DividendYield_Percent DESC;</textarea>
-                <button id="runSqlBtn">Kör fråga (Ctrl + Enter)</button>
-            </div>
-            <div id="sqlStatus" class="status-msg">Laddar SQL-databas i webbläsaren...</div>
-            <div class="table-container">
-                <table id="sqlResultTable">
-                    <!-- SQL-resultat renderas här -->
-                </table>
-            </div>
-        </section>
-
-        <!-- ERFARENHET & UTBILDNING -->
+        <!-- ERFARENHET -->
         <section class="card">
             <h2>💼 Erfarenhet & Utbildning</h2>
             
             <div class="timeline-item">
                 <h3>Clas Ohlson — Butikssäljare</h3>
                 <span class="date">Sep 2024 – Pågående</span>
-                <p>Ansvarar för försäljning och kundservice med fokus på merförsäljning. Arbetar dagligen i digitala system för betalningar och varuhantering i ett högt arbetstempo.</p>
+                <p>Ansvarar för försäljning och kundservice med fokus på merförsäljning. Arbetar dagligen i digitala system för betalningar och varuhantering.</p>
             </div>
 
             <div class="timeline-item">
                 <h3>Klarna Bank — Kundtjänstmedarbetare (Cypern)</h3>
                 <span class="date">Sep 2022 - Mar 2023</span>
-                <p>Utredde och felsökte system- och datarelaterade avvikelser i finansiella flöden under tidspress. Arbetade i CRM- och ärendehanteringssystem för kvalitetssäkring.</p>
+                <p>Utredde och felsökte system- och datarelaterade avvikelser i finansiella flöden under tidspress. Arbetade i CRM- och ärendehanteringssystem.</p>
             </div>
 
             <div class="timeline-item">
                 <h3>Stockholms Universitet — Dubbelkandidatexamen</h3>
                 <span class="date">Aug 2023 - Jun 2026</span>
-                <p>Kandidatexamen i <strong>Data- och Systemvetenskap</strong> (BI, Data Warehousing, kravhantering) samt kandidatexamen i <strong>Reklam och PR</strong> (verksamhets- och affärsförståelse).</p>
+                <p>Kandidatexamen i <strong>Data- och Systemvetenskap</strong> (BI, Data Warehousing, kravhantering) samt kandidatexamen i <strong>Reklam och PR</strong>.</p>
             </div>
         </section>
 
@@ -102,7 +84,7 @@
 
     <footer>
         <div class="container">
-            <p>Smilla Gustafsson &copy; 2026 | <a href="mailto:smilla03.gustafsson@gmail.com" style="color: #4cd137;">smilla03.gustafsson@gmail.com</a></p>
+            <p>Smilla Gustafsson &copy; 2026 | <a href="mailto:smilla03.gustafsson@gmail.com" style="color: #00ff88;">smilla03.gustafsson@gmail.com</a></p>
         </div>
     </footer>
 
