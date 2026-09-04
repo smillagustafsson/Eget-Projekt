@@ -1,10 +1,10 @@
 # Hej, jag är Smilla Gustafsson! 👋 
-👉 **[KLICKA HÄR FÖR ATT ÖPPNA MIN INTERAKTIVA PORTFOLIO-HEMSIDA LIVE!](https://github.io)**
+👉 **[KLICKA HÄR FÖR ATT ÖPPNA MIN INTERAKTIVA PORTFOLIO-HEMSIDA LIVE!](https://smillagustafsson.github.io/Eget-Projekt/)**
 ### Junior BI & Data Analyst | Blivande Business Analyst
 
 Välkommen till min digitala profil och tech-portfölj! Jag är nyutexaminerad med en **dubbelkandidatexamen inom Data- och systemvetenskap samt Reklam och PR** från Stockholms universitet. 
 
-Kombinationen av mina utbildningar har gett mig en bred teknisk och verksamhetsnära kompetens inom systemutveckling, dataanalys, databaser, AI och stark affärsförståelse. Jag har ett lösningsorienterat arbetssätt, ett öga för struktur och kvalitet, och jag drivs av att kombinera analys, problemlösning och kommunikation – att helt enkelt agera bron mellan IT och verksamhet.
+Kombinationen av mina utbildningar har gett mig en bred teknisk och verksamhetsnära kompetens inom systemutveckling, dataanalys, databaser, AI och stark affärsförståelse. Jag har ett lösningsorienterat arbetssätt, ett öga för struktur och kvalitet, och jag drivs av att kombinera analys, problemlösning och kommunikation.
 
 På min fritid har jag ett stort intresse för **aktier och finans**. Här nedan visar jag hur jag kombinerar min passion för investeringar med min tekniska verktygslåda (**Python, SQL och Azure BI**) för att hämta, strukturera och visualisera finansiell data.
 
@@ -24,7 +24,7 @@ För att visa hur jag jobbar i gränslandet mellan data och affärsvärde har ja
 ## 🛠️ Kompetenser & Verktyg
 
 *   **Data & Analys:** SQL, Microsoft Excel, Dataanalys, Business Intelligence-verktyg, Datavisualisering, Data Warehousing, NoSQL-databaser.
-*   **System & Verktyg:** CRM-system, Ärendehanteringssystem (Jira/Zendesk), Microsoft Access, HTML/CSS, ERP-system.
+*   **System & Verktyg:** CRM-system, Microsoft Access, HTML/CSS, ERP-system.
 *   **Tekniska Kunskaper:** Python, Java, UML-modellering, Kravhantering, Systemintegration.
 *   **Språk:** Svenska (Modersmål), Engelska (Flytande).
 
@@ -33,12 +33,12 @@ För att visa hur jag jobbar i gränslandet mellan data och affärsvärde har ja
 ## 💼 Utbildning & Erfarenhet i urval
 
 ### Utbildning
-*   **Fil.kand. i Data- och Systemvetenskap** | Stockholms Universitet (2023 - 2026)
-    *   *Fokus:* Data warehousing, BI, datadriven analys, kravhantering, strategisk IT-ledning.
-*   **Fil.kand. i Reklam och PR** | Stockholms Universitet (2023 - 2026)
-    *   *Fokus:* Varumärkesbyggande, organisationsledning, redovisning samt verksamhets- och affärsförståelse.
+*   **Kandidatexamen i Data- och Systemvetenskap** | Stockholms Universitet (2023 - 2026)
+    *   *Fokus:* Studier inom data warehousing, NoSQL-databaser, business intelligence, data-driven analys, ERP-system, kravhantering, systemintegration, digital affärsutveckling och strategisk IT-ledning.
+*   **Kandidatexamen i Reklam och PR** | Stockholms Universitet (2023 - 2026)
+    *   *Fokus:* Studier inom varumärkesbyggande, strategisk marknadskommunikation, organisationsledning, redovisning samt verksamhets- och affärsförståelse.
 *   **Ekonomiprogrammet** | Anna Whitlocks gymnasium (2019 - 2022)
-    *   *Fokus:* Företagsekonomi, bokföring, redovisning och finansiell analys.
+    *   *Fokus:* Fördjupning inom företagsekonomi med fokus på ekonomiska samband, bokföring, redovisning och finansiell analys.
 
 ### Arbetslivserfarenhet
 *   **Klarna Bank (Cypern) – Kundtjänstmedarbetare** (2022 - 2023)
@@ -50,5 +50,6 @@ För att visa hur jag jobbar i gränslandet mellan data och affärsvärde har ja
 
 ## 📬 Låt oss koppla ihop på LinkedIn!
 Jag letar just nu efter spännande utmaningar som **Junior BI Analyst**, **Data Analyst** eller **Business Analyst** i Stockholm (eller remote).
-*   **LinkedIn:** [Klicka här för att besöka min LinkedIn-profil](https://linkedin.com) *(Byt ut till din riktiga länk)*
+*   **LinkedIn:** [Klicka här för att besöka min LinkedIn-profil](www.linkedin.com/in/smilla-gustafsson) 
 *   **E-post:** smilla03.gustafsson@gmail.com
+*   **Telefonnummer:** 0738492003
