@@ -1,47 +1,51 @@
 -- =========================================================================
--- JUNIOR DATA ANALYST - SQL & AZURE DATABASE MODELING
--- Syfte: Strukturera finansiell data för en aktieportfölj.
--- Anpassad för migrering till Azure SQL Database och visualisering i Power BI.
+-- JUNIOR DATA ANALYST - NASDAQ STOCKHOLM RELATIONAL MODEL
+-- Syfte: Strukturera data för hela den svenska aktiemarknaden.
 -- =========================================================================
 
--- 1. Skapa tabell för bolagsinformation (Dimensionstabell)
-CREATE TABLE Companies (
+-- 1. Dimensionstabell för noterade bolag på Stockholmsbörsen
+CREATE TABLE StockholmExchange (
     CompanyID INT PRIMARY KEY,
     Ticker VARCHAR(10) NOT NULL,
     CompanyName VARCHAR(100) NOT NULL,
     Sector VARCHAR(50),
-    DividendYield_Percent DECIMAL(4,2) -- Direktavkastning
+    Segment VARCHAR(20),             -- Large Cap, Mid Cap, Small Cap
+    Is_OMXS30 BOOLEAN DEFAULT FALSE   -- Om aktien ingår i storbolagsindexet
 );
 
--- 2. Skapa tabell för dagliga aktiekurser (Faktatabell för BI-analys)
-CREATE TABLE StockPrices (
-    PriceID INT PRIMARY KEY,
+-- 2. Faktatabell för finansiella nyckeltal och marknadsdata
+CREATE TABLE MarketMetrics (
+    MetricID INT PRIMARY KEY,
     CompanyID INT,
-    TradingDate DATE,
-    ClosingPrice DECIMAL(10,2),
-    Volume INT,
-    FOREIGN KEY (CompanyID) REFERENCES Companies(CompanyID)
+    PE_Ratio DECIMAL(5,2),            -- P/E-tal (Värdering)
+    DividendYield_Percent DECIMAL(4,2),-- Direktavkastning
+    MarketCap_MSEK INT,               -- Börsvärde i miljoner kronor
+    FOREIGN KEY (CompanyID) REFERENCES StockholmExchange(CompanyID)
 );
 
--- 3. Lägg till data för analys (Svenska folkaktier)
-INSERT INTO Companies VALUES (1, 'INVE-B', 'Investor', 'Investment', 2.10);
-INSERT INTO Companies VALUES (2, 'VOLV-B', 'Volvo', 'Industri', 5.50);
-INSERT INTO Companies VALUES (3, 'SAAB-B', 'Saab', 'Försvar', 1.20);
+-- 3. Lägg till data för marknaden
+INSERT INTO StockholmExchange VALUES (1, 'INVE-B', 'Investor', 'Investment', 'Large Cap', TRUE);
+INSERT INTO StockholmExchange VALUES (2, 'VOLV-B', 'Volvo', 'Industri', 'Large Cap', TRUE);
+INSERT INTO StockholmExchange VALUES (3, 'SAAB-B', 'Saab', 'Försvar', 'Large Cap', TRUE);
+INSERT INTO StockholmExchange VALUES (4, 'SEBA', 'SEB', 'Bank', 'Large Cap', TRUE);
+INSERT INTO StockholmExchange VALUES (5, 'SBB-B', 'SBB', 'Fastighet', 'Mid Cap', FALSE);
 
-INSERT INTO StockPrices VALUES (101, 1, '2026-09-04', 285.00, 1200000);
-INSERT INTO StockPrices VALUES (102, 2, '2026-09-04', 272.50, 2500000);
-INSERT INTO StockPrices VALUES (103, 3, '2026-09-04', 252.00, 800000);
+INSERT INTO MarketMetrics VALUES (501, 1, 14.20, 2.10, 850000);
+INSERT INTO MarketMetrics VALUES (502, 2, 11.50, 5.50, 560000);
+INSERT INTO MarketMetrics VALUES (503, 3, 28.40, 1.20, 130000);
+INSERT INTO MarketMetrics VALUES (504, 4, 9.80, 6.20, 310000);
+INSERT INTO MarketMetrics VALUES (505, 5, NULL, 0.00, 15000);
 
--- 4. BI-Fråga: Hämta bolag med hög direktavkastning (High Yield) till Power BI
--- Visar att du kan filtrera fram strategisk data med SQL
+-- 4. BI ADVANCED QUERY: Hämta genomsnittlig värdering (P/E) och direktavkastning 
+-- per segment för storbolag (Visar djup förståelse för datastrukturer)
 SELECT 
-    CompanyName, 
-    Ticker, 
-    Sector, 
-    DividendYield_Percent
+    e.Segment,
+    COUNT(e.CompanyID) as Total_Companies,
+    AVG(m.PE_Ratio) as Avg_PE,
+    AVG(m.DividendYield_Percent) as Avg_Yield
 FROM 
-    Companies
-WHERE 
-    DividendYield_Percent > 2.0
-ORDER BY 
-    DividendYield_Percent DESC;
+    StockholmExchange e
+JOIN 
+    MarketMetrics m ON e.CompanyID = m.CompanyID
+GROUP BY 
+    e.Segment;

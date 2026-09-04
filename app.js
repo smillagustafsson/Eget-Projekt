@@ -7,18 +7,16 @@ const ctx = document.getElementById('performanceChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Investor (INVE-B)', 'Volvo (VOLV-B)', 'Saab (SAAB-B)'],
+        labels: ['Investor', 'Volvo', 'Saab', 'SEB', 'AstraZeneca', 'SBB', 'Evolution', 'Sandvik'],
         datasets: [{
-            label: 'Aktieutveckling (%) Dag 1 till Dag 2',
-            data: [1.79, -2.59, 4.76], // Beräknad data från din Python-analys
+            label: 'Aktieutveckling på Stockholmsbörsen (%)',
+            data: [1.79, -2.59, 4.76, 2.46, 2.41, -13.33, 3.13, -1.40], 
             backgroundColor: [
-                'rgba(0, 255, 136, 0.6)', // Grön för vinst
-                'rgba(255, 77, 77, 0.6)',  // Röd för förlust
-                'rgba(0, 255, 136, 0.6)'  // Grön för vinst
+                '#00ff88', '#ff4d4d', '#00ff88', '#00ff88', '#00ff88', '#ff4d4d', '#00ff88', '#ff4d4d'
             ],
-            borderColor: ['#00ff88', '#ff4d4d', '#00ff88'],
             borderWidth: 1
         }]
+
     },
     options: {
         responsive: true,
