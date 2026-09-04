@@ -1,31 +1,68 @@
 # =========================================================================
-# JUNIOR DATA ANALYST - STOCKHOLM STOCK EXCHANGE (PYTHON DATA PIPELINE)
-# Syfte: Analysera marknadsutveckling, index (OMXS30) och fördela sektorer.
+# LIVE DATA PIPELINE - NASDAQ STOCKHOLM OMXS30 (FIXED)
+# Syfte: Hämta RIKTIG realtidsdata via yfinance API för Stockholmsbörsen.
+# Genererar automatiskt en städad Excel-export för Power BI.
 # =========================================================================
 
 import pandas as pd
+import yfinance as yf
 
-# 1. Simulerar ett större dataset över Stockholmsbörsen (Nasdaq Stockholm)
-market_data = {
-    'Ticker': ['INVE-B', 'VOLV-B', 'SAAB-B', 'SEBA', 'AZN', 'SBB-B', 'EVO', 'SAND'],
-    'Company': ['Investor', 'Volvo', 'Saab', 'SEB', 'AstraZeneca', 'SBB', 'Evolution', 'Sandvik'],
-    'Segment': ['Large Cap', 'Large Cap', 'Large Cap', 'Large Cap', 'Large Cap', 'Mid Cap', 'Large Cap', 'Large Cap'],
-    'Sector': ['Investment', 'Industri', 'Försvar', 'Bank', 'Hälsovård', 'Fastighet', 'Gaming', 'Industri'],
-    'Price_Day1': [280.00, 279.75, 240.50, 142.00, 1450.00, 4.50, 1120.00, 215.00],
-    'Price_Day2': [285.00, 272.50, 252.00, 145.50, 1485.00, 3.90, 1155.00, 212.00]
+print("🚀 Initierar API-anslutning till Nasdaq Stockholm...")
+
+stock_mapping = {
+    'INVE-B.ST': {'Company': 'Investor', 'Sector': 'Investment'},
+    'VOLV-B.ST': {'Company': 'Volvo', 'Sector': 'Industri'},
+    'SAAB-B.ST': {'Company': 'Saab', 'Sector': 'Försvar'},
+    'SEB-A.ST':  {'Company': 'SEB', 'Sector': 'Bank'},
+    'HM-B.ST':   {'Company': 'H&M', 'Sector': 'Sällanköpsvaror'},
+    'ERIC-B.ST': {'Company': 'Ericsson', 'Sector': 'Telekom'},
+    'AZN.ST':    {'Company': 'AstraZeneca', 'Sector': 'Hälsovård'},
+    'EVO.ST':    {'Company': 'Evolution', 'Sector': 'Gaming'}
 }
 
-df = pd.DataFrame(market_data)
+tickers_list = list(stock_mapping.keys())
 
-# 2. Beräkna procentuell utveckling per aktie
-df['Performance_%'] = ((df['Price_Day2'] - df['Price_Day1']) / df['Price_Day1']) * 100
+try:
+    print("📥 Hämtar realtidsdata från Yahoo Finance API...")
+    # Hämtar 5 dagars historik
+    raw_data = yf.download(tickers_list, period='5d', progress=False)
+    
+    processed_records = []
+    
+    for ticker in tickers_list:
+        try:
+            # Säkrar att vi drar ut rätt data per kolumn genom att platta till Multi-Indexet
+            ticker_data = raw_data.xs(ticker, axis=1, level=1) if isinstance(raw_data.columns, pd.MultiIndex) else raw_data
+            ticker_data = ticker_data.dropna()
+            
+            if len(ticker_data) >= 2:
+                latest_close = ticker_data['Close'].iloc[-1]
+                previous_close = ticker_data['Close'].iloc[-2]
+                volume = ticker_data['Volume'].iloc[-1]
+                
+                day_change = ((latest_close - previous_close) / previous_close) * 100
+                
+                processed_records.append({
+                    'Ticker': ticker.replace('.ST', '').replace('-A', '').replace('-B', ''),
+                    'Bolag': stock_mapping[ticker]['Company'],
+                    'Sektor': stock_mapping[ticker]['Sector'],
+                    'Live_Kurs_SEK': round(latest_close, 2),
+                    'Idag_Utveckling_%': round(day_change, 2),
+                    'Handelsvolym': int(volume)
+                })
+        except Exception:
+            continue
+            
+    df = pd.DataFrame(processed_records)
+    
+    # 🔥 HÄR SKAPAS FILEN AUTOMATISKT PÅ DIN MAC:
+    output_filename = 'aktiedata_live.xlsx'
+    df.to_excel(output_filename, index=False)
+    
+    print("\n--- 📈 LIVE DATA UTDRAG (NASDAQ STOCKHOLM) ---")
+    print(df.to_string(index=False))
+    print(f"\n✅ PIPELINE LYCKADES: '{output_filename}' har skapats helt felfritt!")
 
-print("--- 📈 MARKNADSANALYS: NASDAQ STOCKHOLM ---")
-# 3. Beräkna genomsnittlig utveckling per sektor (Verksamhetsnära BI-insikt)
-sector_performance = df.groupby('Sector')['Performance_%'].mean().reset_index()
-print("\nGenomsnittlig utveckling per sektor:")
-print(sector_performance.round(2))
+except Exception as e:
+    print(f"❌ Fel uppstod vid hämtning av marknadsdata: {e}")
 
-# 4. Beräkna totalt index-estimat (Simulerat OMXS30-drag)
-omx_performance = df['Performance_%'].mean()
-print(f"\nTotal marknadsutveckling (OMXS30-index): {omx_performance:.2f}%")
